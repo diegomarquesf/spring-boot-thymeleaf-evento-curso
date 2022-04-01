@@ -10,6 +10,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
+
 import lombok.Data;
 
 @Data
@@ -24,8 +27,14 @@ public class Curso implements Serializable{
 	
 	private String nome;
 	private String local;
+	
+	@DateTimeFormat(iso = ISO.DATE)
 	private LocalDate data;
+	
+	@DateTimeFormat(iso = ISO.TIME)
 	private LocalTime horaInicio;
+	
+	@DateTimeFormat(iso = ISO.TIME)
 	private LocalTime horaFim;
 
 }
