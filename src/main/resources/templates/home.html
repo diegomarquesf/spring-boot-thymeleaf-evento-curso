@@ -1,12 +1,26 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html 
+	lang="pt-br"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<title>Home</title>
+	<title>Eventos App</title>
 </head>
 
 <body>
-	<p>Funcionando</p>
+	<h1> Lista de Cursos </h1>
+	<h3> <a href="/cursos/cadastrarCurso">Cadastrar Curso</h3>
+	
+	<div th:each="curso : ${cursos}">
+		<div class="row">
+			<p><span th:text="${curso.nome}"> </span></p>
+			<p><span th:text="${curso.local}"> </span></p>
+			<p><span th:text="${curso.data}"> </span></p>
+			<p><span th:text="${curso.horaInicio}"> </span></p>
+			<p><span th:text="${curso.horaFim}"> </span></p>
+		</div>
 </body>
 
 </html>

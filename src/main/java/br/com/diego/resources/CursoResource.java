@@ -2,6 +2,7 @@ package br.com.diego.resources;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -23,8 +24,16 @@ public class CursoResource {
 	@RequestMapping(value="/cadastrarCurso", method = RequestMethod.POST)
 	public String insert(Curso curso) {
 		cursoRepository.save(curso);
-		return "redirect:/cursos/cadastrarCurso";
+		return "redirect:/cursos/home";
 	}
+	
+	@RequestMapping(value="/listarCurso", method = RequestMethod.GET)
+	public String findAll(ModelMap model) {
+		model.addAttribute("cursos", cursoRepository.findAll());
+		return "/home";
+	}
+	
+	
 	
 
 	
