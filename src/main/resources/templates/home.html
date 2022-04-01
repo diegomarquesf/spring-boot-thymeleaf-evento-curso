@@ -7,20 +7,45 @@
 
 <head>
 	<title>Eventos App</title>
+	
+	<!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="/materialize/css/materialize.min.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 
 <body>
 	<h1> Lista de Cursos </h1>
-	<h3> <a href="/cursos/cadastrarCurso">Cadastrar Curso</h3>
+	<h3><a href="/cursos/cadastrar" class="waves-effect waves-light btn"><i class="material-icons left">add_circle_outline</i>Cadastrar Curso</a></h3>
 	
-	<div th:each="curso : ${cursos}">
-		<div class="row">
-			<p><span th:text="${curso.nome}"> </span></p>
-			<p><span th:text="${curso.local}"> </span></p>
-			<p><span th:text="${curso.data}"> </span></p>
-			<p><span th:text="${curso.horaInicio}"> </span></p>
-			<p><span th:text="${curso.horaFim}"> </span></p>
-		</div>
+	<table class="container">
+		<thead>
+			<tr>
+				<th> # </th>
+				<th> Nome</th>
+				<th> Local </th>
+				<th> Data </th>
+				<th> Hora Início </th>
+				<th> Hora Final </th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			<tr th:each="curso : ${cursos}">
+				<td><span th:text="${curso.id}"> </span></d>
+				<td><span th:text="${curso.nome}"> </span></td>
+				<td><span th:text="${curso.local}"> </span></td>
+				<td><span th:text="${curso.data}"> </span></td>
+				<td><span th:text="${curso.horaInicio}"> </span></td>
+				<td><span th:text="${curso.horaFim}"> </span></td>
+			</tr>
+		</tbody>
+		
+		<!--JavaScript at end of body for optimized loading-->
+      <script type="text/javascript" src="/materialize/js/materialize.min.js"></script>
 </body>
 
 </html>

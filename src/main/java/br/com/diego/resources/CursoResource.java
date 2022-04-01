@@ -16,15 +16,15 @@ public class CursoResource {
 	@Autowired
 	private CursoRepository cursoRepository;
 
-	@RequestMapping(value="/cadastrarCurso", method = RequestMethod.GET)
+	@RequestMapping(value="/cadastrar", method = RequestMethod.GET)
 	public String form() {
-		return "/curso/cadastrarCurso";
+		return "curso/cadastrarCurso";
 	}
 	
 	@RequestMapping(value="/cadastrarCurso", method = RequestMethod.POST)
 	public String insert(Curso curso) {
 		cursoRepository.save(curso);
-		return "redirect:/cursos/home";
+		return "redirect:/cursos/listarCurso";
 	}
 	
 	@RequestMapping(value="/listarCurso", method = RequestMethod.GET)
