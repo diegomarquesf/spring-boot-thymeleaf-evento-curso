@@ -7,5 +7,6 @@ import br.com.diego.domains.Curso;
 
 @Repository
 public interface CursoRepository extends JpaRepository<Curso, Long> {
+	
 
 }

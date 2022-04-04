@@ -19,7 +19,7 @@
 
 <body>
 	<h1> Lista de Cursos </h1>
-	<h3><a href="/cursos/cadastrar" class="waves-effect waves-light btn"><i class="material-icons left">add_circle_outline</i>Cadastrar Curso</a></h3>
+	<h3><a href="/cursos/cadastrar"  class="waves-effect waves-light btn"><i class="material-icons left">add_circle_outline</i>Cadastrar Curso</a></h3>
 	
 	<table class="container">
 		<thead>
@@ -27,9 +27,7 @@
 				<th> # </th>
 				<th> Nome</th>
 				<th> Local </th>
-				<th> Data </th>
-				<th> Hora Início </th>
-				<th> Hora Final </th>
+				<th class="center-align"> Ação </th>
 			</tr>
 		</thead>
 		
@@ -38,9 +36,9 @@
 				<td><span th:text="${curso.id}"> </span></d>
 				<td><span th:text="${curso.nome}"> </span></td>
 				<td><span th:text="${curso.local}"> </span></td>
-				<td><span th:text="${curso.data}"> </span></td>
-				<td><span th:text="${curso.horaInicio}"> </span></td>
-				<td><span th:text="${curso.horaFim}"> </span></td>
+				<td><a th:href="@{/cursos/details/{id} (id=${curso.id})}" class="waves-effect waves-light btn"><i class="material-icons left"></i>Detalhes</a></td>
+				<td><a class="waves-effect waves-light btn"><i class="material-icons left"></i>Editar</a> </td>
+				<td><a class="waves-effect waves-light btn"><i class="material-icons left"></i>Excluir</a> </td>
 			</tr>
 		</tbody>
 		

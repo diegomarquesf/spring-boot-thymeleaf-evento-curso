@@ -3,6 +3,7 @@ package br.com.diego.resources;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -31,6 +32,12 @@ public class CursoResource {
 	public String findAll(ModelMap model) {
 		model.addAttribute("cursos", cursoRepository.findAll());
 		return "/home";
+	}
+	
+	@RequestMapping("details/{id}")
+	public String detailCurso(@PathVariable("id") Long id, ModelMap model) {
+		model.addAttribute("curso", cursoRepository.findById(id));
+		return "/curso/detalhesCurso";
 	}
 	
 	
