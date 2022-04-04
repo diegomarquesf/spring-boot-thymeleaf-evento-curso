@@ -1,31 +1,33 @@
 package br.com.diego.domains;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import java.time.LocalDate;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 import lombok.Data;
 
-@Data
 @Entity
-@Table(name = "tb_curso")
-public class Curso implements Serializable{
-	private static final long serialVersionUID = 1L;
-
+@Data
+@Table(name="tb_aluno")
+public class Aluno {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	private String nome;
+	private String cpf;
+	private String rg;
+	private String celular;
 	
-	@OneToMany(mappedBy = "curso")
-	private List<Evento> eventos = new ArrayList<>();
+	@DateTimeFormat(iso = ISO.DATE)
+	private LocalDate dataNascimento;
 
 }
