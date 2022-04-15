@@ -21,10 +21,10 @@
 	<h1> Cadastro de Evento </h1>
 	<h3><a href="/eventos/find" class="waves-effect waves-light btn"><i class="material-icons left">format_list_bulleted</i>Lista Evento</a></h3>
 	
-	<form class="container" method="POST">
+	<form class="container" th:action="@{/eventos/cadastrar}" th:object="${evento}" th:method="POST">
 		<div class="row">
 			 <div class="input-field col s12">
-			    <select>
+			    <select id="curso" name="curso">
 			      <option value="" disabled selected>Escolha o Curso</option>
 			      <option   th:each="curso : ${cursos}"
 			    			th:value="${curso.id}"
@@ -35,7 +35,7 @@
 			  </div>
 			
 			<div class="input-field col s5">
-				Local: <input type="text" name="local" id="local" />
+				Local: <input type="text" id="local" name="local" />
 			</div>
 			<div class="input-field col s3">
 				Data: <input type="date" name="data" id="data"/>
@@ -47,6 +47,7 @@
 				Horário Fim: <input type="time" name="horaFim" id="horaFim" />
 			</div>
 		</div>
+		<input type="hidden" id="id" />
 		<button type="submit" class="waves-effect waves-light btn"> Salvar </button>
 	</form>
 		

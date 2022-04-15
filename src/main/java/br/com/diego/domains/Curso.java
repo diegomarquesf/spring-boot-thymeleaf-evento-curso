@@ -1,7 +1,6 @@
 package br.com.diego.domains;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -26,6 +25,6 @@ public class Curso implements Serializable{
 	private String nome;
 	
 	@OneToMany(mappedBy = "curso")
-	private List<Evento> eventos = new ArrayList<>();
+	private List<Evento> eventos;
 
 }

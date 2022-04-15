@@ -41,6 +41,8 @@ public class Evento implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "curso_id")
 	private Curso curso;
+	
+	
 
 
 }
