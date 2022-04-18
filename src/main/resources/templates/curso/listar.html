@@ -19,7 +19,7 @@
 
 <body>
 	<h1> Lista de Cursos </h1>
-	<h3><a href="/cursos/cadastrar"  class="waves-effect waves-light btn"><i class="material-icons left">add_circle_outline</i>Cadastrar Curso</a></h3>
+	<h3><a href="/cursos/cadastrar"  class="waves-effect waves-light btn"><i class="material-icons left">add</i>Cadastrar Curso</a></h3>
 	
 	<table class="container">
 		<thead>
@@ -36,11 +36,11 @@
 				<td><span th:text="${curso.nome}"> </span></td>
 				
 				<td> 
-					<a class="waves-effect waves-light btn" th:href="@{/cursos/update/{id} (id=${curso.id}) }"> <i class="material-icons left"></i>Editar</a> 
+					<a class="waves-effect waves-light btn" th:href="@{/cursos/update/{id} (id=${curso.id}) }"> <i class="material-icons left">mode_edit</i>Editar</a> 
 				</td>
 				
 				<td>
-					<a class="waves-effect waves-light btn"> <i class="material-icons left"></i>Excluir </a> 
+				<a class="waves-effect waves-light btn" th:href="@{/cursos/delete/{id} (id=${curso.id}) }"> <i class="material-icons left">delete</i>Excluir</a>  
 				</td>
 			</tr>
 		</tbody>

@@ -47,6 +47,15 @@ public class CursoResource {
 		return "redirect:/cursos/find";
 	}
 	
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+	public String delete(@PathVariable("id") Long id) {
+		if (cursoService.cursoHasEvento(id)) {
+			return "redirect:/cursos/find";
+		}else {
+			cursoService.delete(id);
+		}
+			return "redirect:/cursos/find";
+	}
 	
 
 	

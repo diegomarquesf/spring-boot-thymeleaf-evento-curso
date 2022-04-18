@@ -30,8 +30,20 @@ public class CursoService {
 				()-> new EntityNotFoundException("O ID " + id + " não Existe"));
 	}
 
-	public Curso update(Curso curso) {
-		return cursoRepository.save(curso);
+	public void update(Curso curso) {
+		 cursoRepository.save(curso);
+	}
+	
+	public void delete(Long id) {
+		Curso curso = findById(id);
+		cursoRepository.delete(curso);
+	}
+	
+	public boolean cursoHasEvento(Long id) {
+		if (findById(id).getEventos().isEmpty()) {
+			return false;
+		}
+		return true;
 	}
 
 }
