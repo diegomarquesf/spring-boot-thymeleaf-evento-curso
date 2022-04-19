@@ -16,10 +16,14 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "tb_evento")
 @Data
+@Getter
+@Setter
 public class Evento implements Serializable {
 	private static final long serialVersionUID = 1L;
 

@@ -7,7 +7,6 @@
 
 <head>
 	<title>Eventos App</title>
-	
 	<!--Import Google Icon Font-->
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
       <!--Import materialize.css-->
@@ -19,12 +18,52 @@
 
 <body>
 	<h1> Lista de Eventos </h1>
-	<h3><a href="/eventos/cadastrar"  class="waves-effect waves-light btn"><i class="material-icons left">add_circle_outline</i>Cadastrar Evento</a></h3>
-		
-	<table class="container">
 	
+		<h3><a href="/eventos/cadastrar"  class="waves-effect waves-light btn"><i class="material-icons left">add</i>Cadastrar Evento</a></h3>
+	<table class="container">
 		<div class="row container">
-    		<!-- <form class="col s12" th:method="GET" th:action="@{/eventos/find/curso}">
+		<thead>
+			<tr>
+				<th> # </th>
+				<th> Nome</th>
+				<th> Local </th>
+				<th> Data </th>
+				<th> Hora de Início </th>
+				<th> Hora Final </th>
+				<th class="center-align"> Ação </th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			<tr th:each=" evento : ${eventos}">
+				<td th:text="${evento.id}"> </td>
+				<td th:text="${evento.curso != null ? evento.curso.nome : ''}"> </td>
+				<td th:text="${evento.local}"> </td>
+				<td th:text="${#temporals.format(evento.data, 'dd/MM/yyy')}"> </td>
+				<td th:text="${evento.horaInicio}"> </td>
+				<td th:text="${evento.horaFim}"> </td>
+				<td>
+					 <a class="waves-effect waves-light btn" th:href="@{/eventos/update/{id} (id=${evento.id})}"><i class="material-icons left">mode_edit</i>Editar</a>
+					<a class="waves-effect waves-light btn"><i class="material-icons left">delete</i>Excluir</a> 
+				</td>			
+			</tr>
+		</tbody>
+		</div>
+	</table>
+	
+    <script type="text/javascript" src="/materialize/js/materialize.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+     $(document).ready(function() {
+        $('select').formSelect();
+   	 });
+  	</script>
+</body>
+
+</html>
+
+<!-- <form class="col s12" th:method="GET" th:action="@{/eventos/find/curso}">
       			<div class="row">
         			<div class="input-field col s6">
           				<i class="material-icons prefix">search</i>
@@ -39,7 +78,7 @@
           				<label for="icon_prefix">Nome do Curso</label> 
        				 </div>
       			</div> 
-    		</form>-->
+    		</form>
       			
        		<form class="col s12" th:action="@{/eventos/find/data}" method="GET">
       			<div class="row">	
@@ -49,43 +88,4 @@
           				<label>Data do Curso</label>
         			</div>
       			</div>
-    		</form>
-  		</div>
-  		
-		<thead>
-			<tr>
-				<th> # </th>
-				<th> Nome</th>,
-				<th> Local </th>
-				<th> Data </th>
-				<th> Hora de Início </th>
-				<th> Hora Final </th>
-				<th class="center-align"> Ação </th>
-			</tr>
-		</thead>
-		
-		<tbody>
-			<tr th:each=" evento : ${eventos}">
-				<td th:text="${evento.id}"> </td>
-				<td th:text="${evento.curso.nome}"> </td>
-				<td th:text="${evento.local}">
-				<td th:text="${#temporals.format(evento.data, 'dd/MM/yyy')}">
-				<td th:text="${evento.horaInicio}">
-				<td th:text="${evento.horaFim}">
-				<td><a class="waves-effect waves-light btn"><i class="material-icons left"></i>Editar</a> </td>
-				<td><a class="waves-effect waves-light btn"><i class="material-icons left"></i>Excluir</a> </td>
-			</tr>
-		</tbody>
-	</table>
-	
-    <script type="text/javascript" src="/materialize/js/materialize.min.js"></script>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script>
-     $(document).ready(function() {
-        $('select').formSelect();
-   	 });
-  	</script>
-</body>
-
-</html>
+    		</form>-->

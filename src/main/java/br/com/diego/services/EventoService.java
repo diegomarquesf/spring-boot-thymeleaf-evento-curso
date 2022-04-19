@@ -1,6 +1,5 @@
 package br.com.diego.services;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.EntityNotFoundException;
@@ -8,7 +7,9 @@ import javax.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.diego.domains.Curso;
 import br.com.diego.domains.Evento;
+import br.com.diego.repositories.CursoRepository;
 import br.com.diego.repositories.EventoRepository;
 
 @Service
@@ -17,9 +18,12 @@ public class EventoService {
 	@Autowired
 	private EventoRepository eventoRepository;
 	
+	@Autowired
+	private CursoRepository cursoRepository;
 	
-	public Evento insert(Evento evento) {
-		return eventoRepository.save(evento);
+
+	public void insert(Evento evento) {
+		 eventoRepository.save(evento);
 	}
 	
 	public List<Evento> findAll(){
@@ -31,11 +35,13 @@ public class EventoService {
 				()-> new EntityNotFoundException("O ID " + id + " não Existe"));
 	}
 	
-	
-	public List<Evento> findByData (LocalDate data){
-		return eventoRepository.findByData(data);
+	public void update(Evento evento) {
+		eventoRepository.save(evento);
 	}
 	
+	public List<Curso> findCursos() {
+		return cursoRepository.findAll();
+	}
 	
 
 }

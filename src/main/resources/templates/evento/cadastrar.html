@@ -21,33 +21,35 @@
 	<h1> Cadastro de Evento </h1>
 	<h3><a href="/eventos/find" class="waves-effect waves-light btn"><i class="material-icons left">format_list_bulleted</i>Lista Evento</a></h3>
 	
-	<form class="container" th:action="@{/eventos/cadastrar}" th:object="${evento}" th:method="POST">
+	<form class="container" th:action="${evento.id == null} ? @{/eventos/save} : @{/eventos/update}"
+							th:object="${evento}" 
+							th:method="POST">
 		<div class="row">
 			 <div class="input-field col s12">
-			    <select id="curso" name="curso">
+			    <select  id="curso" th:field="*{curso.id}">
 			      <option value="" disabled selected>Escolha o Curso</option>
-			      <option   th:each="curso : ${cursos}"
-			    			th:value="${curso.id}"
-			    			th:text="${curso.nome}">
+			      <option th:each="curso : ${cursos}"
+			    		  th:value="${curso.id}"
+			    	  	  th:text="${curso.nome}">
 			      </option>
 			    </select>
 			    <label>Curso</label>
 			  </div>
 			
 			<div class="input-field col s5">
-				Local: <input type="text" id="local" name="local" />
+				Local: <input type="text" id="local" th:field="*{local}" />
 			</div>
 			<div class="input-field col s3">
-				Data: <input type="date" name="data" id="data"/>
+				Data: <input type="date" th:field="*{data}" id="data"/>
 			</div>
 			<div class="input-field col s2">
-				Horário Inicio: <input type="time" name="HoraInicio" id="HoraInicio"/>
+				Horário Inicio: <input type="time" th:field="*{HoraInicio}" id="HoraInicio"/>
 			</div>
 			<div class="input-field col s2">
-				Horário Fim: <input type="time" name="horaFim" id="horaFim" />
+				Horário Fim: <input type="time" th:field="*{horaFim}" id="horaFim" />
 			</div>
 		</div>
-		<input type="hidden" id="id" />
+		<input type="hidden" id="id" th:field="*{id}"/>
 		<button type="submit" class="waves-effect waves-light btn"> Salvar </button>
 	</form>
 		
