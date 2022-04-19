@@ -39,6 +39,11 @@ public class EventoService {
 		eventoRepository.save(evento);
 	}
 	
+	public void delete(Long id) {
+		Evento evento = findById(id);
+		eventoRepository.delete(evento);
+	}
+	
 	public List<Curso> findCursos() {
 		return cursoRepository.findAll();
 	}

@@ -60,6 +60,12 @@ public class EventoResource {
 		return "redirect:/eventos/find";
 	}
 	
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+	public String delete(@PathVariable("id") Long id) {
+		eventoService.delete(id);
+		return "redirect:/eventos/find";
+	}
+	
 	
 
 }
